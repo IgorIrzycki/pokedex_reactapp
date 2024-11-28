@@ -4,7 +4,6 @@ import Team from '../components/Team'; // Zdefiniuj komponent Team, który będz
 import '../styles/MyTeams.css';
 
 const MyTeams = () => {
-  const [user, setUser] = useState(null);  // Przechowywanie użytkownika
   const [teams, setTeams] = useState([]);  // Przechowywanie drużyn użytkownika
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -25,7 +24,6 @@ const MyTeams = () => {
             Authorization: `Bearer ${userData.token}`,  // Wysłanie tokenu JWT w nagłówku
           },
         });
-        setUser(response.data);  // Zapisujemy dane użytkownika
         setTeams(response.data.teamIds || []);  // Zapisujemy drużyny użytkownika
       } catch (error) {
         console.error('Error fetching user or teams:', error);
