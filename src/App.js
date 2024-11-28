@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import AuthPage from './pages/AuthPage';
 import Pokedex from './pages/Pokedex';
 import CreateTeam from './pages/CreateTeam';
+import MyTeams from './pages/MyTeams';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -42,6 +43,10 @@ function App() {
             <Route
               path="/createteam"
               element={isAuthenticated ? <CreateTeam /> : <Navigate to="/auth" replace />}
+            />
+            <Route
+              path="/myteams"
+              element={isAuthenticated ? <MyTeams /> : <Navigate to="/auth" replace />}
             />
             {/* Default Redirect */}
             <Route path="*" element={<Navigate to="/auth" replace />} />

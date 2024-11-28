@@ -40,6 +40,9 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
               <Link to="/createteam">Create Team</Link>
             </li>
             <li>
+              <Link to="/myteams">My Teams</Link>
+            </li>
+            <li>
               <span>Hello, {username}!</span>
             </li>
             <li>
