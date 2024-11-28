@@ -1,0 +1,93 @@
+/* App.css */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Cały ekran */
+  }
+  
+  .content-container {
+    flex: 1; /* Główna zawartość wypełnia przestrzeń */
+    padding: 20px; /* Odstępy wokół zawartości */
+    background-color: #f4f4f4; /* Kolor tła dla zawartości */
+    overflow-y: auto; /* Dodanie scrolla, jeśli zawartość wykracza poza ekran */
+  }
+  
+  footer {
+    background-color: #9a4545; /* Kolor tła zgodny z navbar */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    z-index: 1000;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    transition: color 0.3s;
+  }
+  
+  footer a:hover {
+    color: #ffd700; /* Kolor po najechaniu */
+  }
+  
+  nav {
+    background-color: #9a4545;
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    padding: 10px 0; /* Odstępy wewnętrzne dla navbar */
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie listy */
+  }
+  
+  li {
+    margin-right: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display: block;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: #ffd700;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #c18181;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .submenu.visible {
+    display: block;
+  }
+  
+  li:hover > a {
+    color: #ffd700;
+  }
+  

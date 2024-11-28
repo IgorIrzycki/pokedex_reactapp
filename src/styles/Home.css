@@ -1,0 +1,29 @@
+
+.home-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }
+  
+  .italic-text {
+    font-style: italic;
+  }
+  
+  .underline-text {
+    text-decoration: underline;
+  }
+  
+  .highlighted-text {
+    background-color: #ffff00;
+    padding: 3px;
+    display: inline; 
+  }
+  
+  .custom-styled-text {
+    font-family: 'Arial', sans-serif;
+    color: #4caf50;
+  }
+  
