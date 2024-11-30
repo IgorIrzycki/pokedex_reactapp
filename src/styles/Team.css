@@ -1,6 +1,6 @@
 .team {
-    width: 300px;
-    height: 400px; /* Stała wysokość kafelka */
+    width: 320px;
+    height: auto;
     padding: 20px;
     margin-bottom: 20px;
     border: 2px solid #ddd;
@@ -19,46 +19,14 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    margin-bottom: 10px;
   }
   
-  .pokemon-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
-    flex-grow: 1;
-  }
-  
-  .pokemon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
-    text-align: center;
-    color: #555;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pokemon-item.empty {
-    background: none; /* Puste pole jest przezroczyste */
-    box-shadow: none;
-  }
-  
-  .pokemon-sprite {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 5px;
-  }
-  
-  .pokemon-name {
-    font-size: 14px;
-    margin: 0;
+  .team-title {
+    font-size: 20px;
     color: #333;
+    margin: 0;
+    font-weight: bold;
   }
   
   .menu-icon {
@@ -99,5 +67,116 @@
   
   .menu-dropdown button:hover {
     background-color: #f5f5f5;
+  }
+  
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .pokemon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    text-align: center;
+    color: #555;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pokemon-item.empty {
+    background: none;
+    box-shadow: none;
+  }
+  
+  .pokemon-sprite {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+  
+  .pokemon-name {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+  }
+  
+  .pokemon-edit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .pokemon-edit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pokemon-edit-item button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pokemon-edit-item button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .pokemon-edit-item select {
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 14px;
+  }
+  
+  .edit-mode {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-mode input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .edit-mode button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-mode button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-mode button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
   

@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import '../styles/Team.css';
-import menuIcon from '../assets/menu-icon.png'; // Ikonka trzech kropek (ścieżka do pliku obrazka)
+import menuIcon from '../assets/menu-icon.png'; // Ikonka menu
 
 const Team = ({ team, onEdit, onDelete }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+  const toggleMenu = () => setMenuVisible(!menuVisible);
 
   const handleEdit = () => {
     setMenuVisible(false);
-    onEdit(team);
+    onEdit(team); // Wywołanie funkcji edycji przekazanej jako prop
   };
 
   const handleDelete = () => {
     setMenuVisible(false);
-    onDelete(team);
+    onDelete(team); // Wywołanie funkcji usuwania przekazanej jako prop
   };
 
   return (
@@ -47,6 +45,7 @@ const Team = ({ team, onEdit, onDelete }) => {
             <p className="pokemon-name">{pokemonName}</p>
           </div>
         ))}
+        {/* Dodanie pustych slotów, jeśli drużyna nie ma 6 Pokémonów */}
         {Array.from({ length: 6 - team.pokemonNames.length }).map((_, index) => (
           <div key={`empty-${index}`} className="pokemon-item empty"></div>
         ))}
