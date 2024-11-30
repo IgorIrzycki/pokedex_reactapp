@@ -2,9 +2,6 @@
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   h1 {
@@ -29,46 +26,18 @@
   
   .team-item {
     margin-bottom: 30px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .team-item:last-child {
-    margin-bottom: 0;
-  }
-  
-  .teams-list li {
+  .pagination {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-top: 20px;
   }
   
-  .team-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .team-details {
+  .page-button {
+    margin: 0 5px;
+    padding: 10px 15px;
     font-size: 16px;
-    color: #666;
-  }
-  
-  .team-details li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .team-details img {
-    margin-right: 10px;
-    border-radius: 50%;
-  }
-  
-  .team-button {
-    padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -77,7 +46,13 @@
     transition: background-color 0.3s;
   }
   
-  .team-button:hover {
+  .page-button:hover {
     background-color: #0056b3;
+  }
+  
+  .page-button.active {
+    background-color: #0056b3;
+    font-weight: bold;
+    cursor: default;
   }
   
