@@ -7,12 +7,19 @@ const MyTeams = () => {
   const [user, setUser] = useState(null);
   const [teams, setTeams] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [teamsPerPage] = useState(1);
+  const [teamsPerPage] = useState(3);
   const [errorMessage, setErrorMessage] = useState('');
   const [editingTeam, setEditingTeam] = useState(null);
   const [editedTeamName, setEditedTeamName] = useState('');
   const [editedPokemonNames, setEditedPokemonNames] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
+
+  const extractIdString = (id) => {
+    if (typeof id === 'object' && id.timestamp) {
+      return id.timestamp.toString(16) + id.date.toString(16).slice(-12);
+    }
+    return id; // Jeśli to już string, zwróć bez zmian
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -29,7 +36,7 @@ const MyTeams = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         });
         setUser(response.data);
-        setTeams(response.data.teamIds || []);
+        setTeams(response.data.teams || []);
       } catch (error) {
         console.error('Error fetching user or teams:', error);
         setErrorMessage('Failed to fetch your teams. Please try again.');
@@ -58,41 +65,41 @@ const MyTeams = () => {
       setErrorMessage('Please enter a team name.');
       return;
     }
-  
+
     if (editedPokemonNames.length === 0) {
       setErrorMessage('A team must have at least 1 Pokémon.');
       return;
     }
-  
+
     try {
       const storedData = localStorage.getItem('user');
       const userData = JSON.parse(storedData);
-  
+
       if (!userData || !userData.token) {
         setErrorMessage('You are not authorized. Please log in again.');
         return;
       }
-  
+
       const token = userData.token;
-  
+
       // Pobierz obrazki Pokémonów
       const spritesPromises = editedPokemonNames.map(async (pokemonName) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
         return response.data.sprites.front_default;
       });
-  
+
       const pokemonSprites = await Promise.all(spritesPromises);
-  
+
       // Zaktualizowane dane drużyny
       const updatedTeam = {
         teamName: editedTeamName,
         pokemonNames: editedPokemonNames,
         pokemonSprites,
       };
-  
+
       // Wysłanie żądania aktualizacji do API
       await axios.put(
-        `http://localhost:8080/api/v1/teams/name/${editingTeam.teamName}`,
+        `http://localhost:8080/api/v1/teams/${editingTeam.id}`,
         updatedTeam,
         {
           headers: {
@@ -100,11 +107,11 @@ const MyTeams = () => {
           },
         }
       );
-  
+
       // Aktualizacja drużyny w stanie
       setTeams((prevTeams) =>
         prevTeams.map((team) =>
-          team.teamName === editingTeam.teamName ? { ...team, ...updatedTeam } : team
+          team.id === editingTeam.id ? { ...team, ...updatedTeam } : team
         )
       );
       setEditingTeam(null);
@@ -114,22 +121,23 @@ const MyTeams = () => {
       setErrorMessage('Failed to save team. Please try again.');
     }
   };
-  
-  
+
   const handleDeleteTeam = async (team) => {
     try {
       const storedData = localStorage.getItem('user');
       const userData = JSON.parse(storedData);
   
+      const stringId = extractIdString(team.id); // Przetwarzanie ID na string
+  
       await axios.delete(
-        `http://localhost:8080/api/v1/teams/name/${team.teamName}`,
+        `http://localhost:8080/api/v1/teams/${stringId}`,
         {
           headers: { Authorization: `Bearer ${userData.token}` },
         }
       );
   
       setTeams((prevTeams) =>
-        prevTeams.filter((t) => t.teamName !== team.teamName)
+        prevTeams.filter((t) => t.id !== team.id)
       );
     } catch (error) {
       console.error('Error deleting team:', error);

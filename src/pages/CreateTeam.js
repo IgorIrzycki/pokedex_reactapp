@@ -70,12 +70,12 @@ const CreateTeam = () => {
       setErrorMessage('Please enter a team name.');
       return;
     }
-  
+
     if (selectedPokemon.length === 0) {
       setErrorMessage('A team must have at least 1 Pokémon.');
       return;
     }
-  
+
     try {
       const userdata = JSON.parse(localStorage.getItem('user')); // Pobierz dane użytkownika z localStorage
       const token = userdata.token;
@@ -84,14 +84,14 @@ const CreateTeam = () => {
         setErrorMessage('You are not authorized. Please log in again.');
         return;
       }
-  
+
       const spritesPromises = selectedPokemon.map(async (pokemon) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
         return response.data.sprites.front_default;
       });
-  
+
       const pokemonSprites = await Promise.all(spritesPromises);
-  
+
       // Tworzymy obiekt z danymi drużyny
       const teamData = {
         teamName,
@@ -99,7 +99,7 @@ const CreateTeam = () => {
         pokemonSprites,
         userName: userdata.username, // Można użyć userName z userdata, jeśli jest zapisane
       };
-  
+
       await axios.post(
         'http://localhost:8080/api/v1/teams',
         teamData,
@@ -109,7 +109,7 @@ const CreateTeam = () => {
           },
         }
       );
-  
+
       alert('Team saved successfully!');
       setTeamName('');
       setSelectedPokemon([]);
@@ -118,7 +118,6 @@ const CreateTeam = () => {
       setErrorMessage('Failed to save team. Please try again.');
     }
   };
-  
 
   return (
     <div className="create-team-container">
@@ -158,13 +157,7 @@ const CreateTeam = () => {
             key={pokemon.name}
             className="pokemon-item"
             style={{
-              background: pokemon.types
-                .map((type) => typeColors[type])
-                .join(', '),
-              backgroundImage:
-                pokemon.types.length > 1
-                  ? `linear-gradient(to right, ${typeColors[pokemon.types[0]]}, ${typeColors[pokemon.types[1]]})`
-                  : '',
+              background: typeColors[pokemon.types[0]], // Gradient dla 2 typów, stały kolor dla 1
             }}
             onClick={() => handlePokemonSelect(pokemon)}
           >
