@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
 import Pokedex from './pages/Pokedex';
 import CreateTeam from './pages/CreateTeam';
@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './styles/App.css';
-
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,13 +20,16 @@ function App() {
     setIsAuthenticated(false);
   };
 
-  return (
-    <Router>
+  const AppContent = () => {
+    const location = useLocation();
+    const hideNavbarRoutes = ['/auth']; // Ścieżki, dla których navbar ma być ukryty
+    const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
+
+    return (
       <div className="app-container">
-        <Navbar isLoggedIn={isAuthenticated} onLogout={handleLogout} />
+        {!shouldHideNavbar && <Navbar isLoggedIn={isAuthenticated} onLogout={handleLogout} />}
         <div className="content-container">
           <Routes>
-            
             <Route
               path="/auth"
               element={isAuthenticated ? <Navigate to="/home" replace /> : <AuthPage onLogin={handleLogin} />}
@@ -52,8 +54,14 @@ function App() {
             <Route path="*" element={<Navigate to="/auth" replace />} />
           </Routes>
         </div>
-        <Footer /> {/* Umieść stopkę na dole */}
+        <Footer />
       </div>
+    );
+  };
+
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

@@ -14,13 +14,6 @@ const MyTeams = () => {
   const [editedPokemonNames, setEditedPokemonNames] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
 
-  const extractIdString = (id) => {
-    if (typeof id === 'object' && id.timestamp) {
-      return id.timestamp.toString(16) + id.date.toString(16).slice(-12);
-    }
-    return id; // Jeśli to już string, zwróć bez zmian
-  };
-
   useEffect(() => {
     const fetchUserData = async () => {
       const storedData = localStorage.getItem('user');
@@ -35,6 +28,7 @@ const MyTeams = () => {
         const response = await axios.get(`http://localhost:8080/api/v1/users/${userData.username}`, {
           headers: { Authorization: `Bearer ${userData.token}` },
         });
+        console.log(response.data)
         setUser(response.data);
         setTeams(response.data.teams || []);
       } catch (error) {
@@ -127,10 +121,8 @@ const MyTeams = () => {
       const storedData = localStorage.getItem('user');
       const userData = JSON.parse(storedData);
   
-      const stringId = extractIdString(team.id); // Przetwarzanie ID na string
-  
       await axios.delete(
-        `http://localhost:8080/api/v1/teams/${stringId}`,
+        `http://localhost:8080/api/v1/teams/${team.id}`,
         {
           headers: { Authorization: `Bearer ${userData.token}` },
         }
@@ -215,7 +207,6 @@ const MyTeams = () => {
                     >
                       <option value="" disabled>Select a Pokémon</option>
                       {pokemonList
-                        .filter((pokemon) => !editedPokemonNames.includes(pokemon.name))
                         .map((pokemon) => (
                           <option key={pokemon.name} value={pokemon.name}>
                             {pokemon.name}

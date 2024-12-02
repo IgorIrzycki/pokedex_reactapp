@@ -1,52 +1,108 @@
+/* Navbar container */
 nav {
-    background-color: #9a4545;
-    width: 100%;
-    position: relative;
-    z-index: 1000;
-    top: 0;
-    padding: 10px 0; /* Odstępy wewnętrzne */
-  }
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center; /* Wyśrodkowanie listy */
-  }
-  
-  li {
-    margin-right: 20px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    display: block;
-    transition: color 0.3s;
-  }
-  
-  a:hover {
-    color: #ffd700;
-  }
-  
-  .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #c18181;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-  }
-  
-  .submenu.visible {
-    display: block;
-  }
-  
-  li:hover > a {
-    color: #ffd700;
-  }
-  
+  background-color: #9a4545;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  top: 0;
+  padding: 10px 0; /* Odstępy wewnętrzne */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Lekki cień */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Lista elementów */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around; /* Równomierne rozmieszczenie sekcji */
+  align-items: center; /* Wyśrodkowanie w pionie */
+}
+
+/* Pojedyncze elementy listy */
+li {
+  position: relative;
+  margin: 0;
+  display: flex; /* Dodano flex dla wyśrodkowania w pionie */
+  align-items: center; /* Wyśrodkowanie zawartości li w pionie */
+}
+
+/* Linki w nawigacji */
+a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease; /* Płynny efekt hover */
+}
+
+/* Hover efekt dla linków */
+a:hover {
+  color: #333;
+}
+
+/* Submenu */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #c18181;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+li:hover .submenu {
+  display: block;
+}
+
+.submenu a {
+  padding: 5px 10px;
+  color: white;
+  font-size: 14px;
+  display: block;
+}
+
+.submenu a:hover {
+  color: #333;
+}
+
+/* Styl dla tekstu powitania */
+span {
+  color: white;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 16px; /* Dopasowanie do wielkości tekstu w linkach */
+}
+
+/* Styl dla przycisku wylogowania */
+button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  color: #333;
+}
+
+/* Dodatkowe wyrównanie sekcji */
+li span,
+li button {
+  display: flex;
+  align-items: center; /* Dopasowanie do pozycji linków */
+}

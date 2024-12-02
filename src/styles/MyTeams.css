@@ -97,6 +97,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
   
   .pokemon-edit-slot {
@@ -136,7 +137,7 @@
   .pokemon-edit-slot button:hover {
     background-color: #e63946;
   }
-  
+
   button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -147,6 +148,8 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   button:hover {

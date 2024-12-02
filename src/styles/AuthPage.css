@@ -5,6 +5,7 @@
     height: 100vh;
     gap: 2rem;
     background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
   }
   
   .form-container {

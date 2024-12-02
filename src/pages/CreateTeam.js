@@ -37,8 +37,9 @@ const CreateTeam = () => {
           response.data.results.map(async (pokemon) => {
             const details = await axios.get(pokemon.url);
             return {
+              id: details.data.id,
               name: pokemon.name,
-              types: details.data.types.map((type) => type.type.name),
+              types: details.data.types,
             };
           })
         );
@@ -77,9 +78,8 @@ const CreateTeam = () => {
     }
 
     try {
-      const userdata = JSON.parse(localStorage.getItem('user')); // Pobierz dane użytkownika z localStorage
-      const token = userdata.token;
-      console.log("JWT Token: ", token);
+      const userdata = JSON.parse(localStorage.getItem('user'));
+      const token = userdata?.token;
       if (!token) {
         setErrorMessage('You are not authorized. Please log in again.');
         return;
@@ -92,12 +92,11 @@ const CreateTeam = () => {
 
       const pokemonSprites = await Promise.all(spritesPromises);
 
-      // Tworzymy obiekt z danymi drużyny
       const teamData = {
         teamName,
         pokemonNames: selectedPokemon.map((pokemon) => pokemon.name),
         pokemonSprites,
-        userName: userdata.username, // Można użyć userName z userdata, jeśli jest zapisane
+        userName: userdata.username,
       };
 
       await axios.post(
@@ -105,7 +104,7 @@ const CreateTeam = () => {
         teamData,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Dodaj token JWT do nagłówka
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -133,14 +132,14 @@ const CreateTeam = () => {
       />
 
       <h2>Selected Pokémon</h2>
-      <ul className="selected-pokemon-list">
+      <div className="selected-pokemon-grid">
         {selectedPokemon.map((pokemon, index) => (
-          <li key={index} className="selected-pokemon-item">
-            <span>{pokemon.name}</span>
+          <div key={index} className="pokemon-tile">
+            <p>{pokemon.name}</p>
             <button onClick={() => handleRemovePokemon(index)}>Remove</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
 
       <button
         className="save-button"
@@ -151,20 +150,18 @@ const CreateTeam = () => {
       </button>
 
       <h2>Available Pokémon</h2>
-      <ul className="pokemon-grid">
+      <div className="pokemon-grid">
         {pokemonList.map((pokemon) => (
-          <li
-            key={pokemon.name}
-            className="pokemon-item"
-            style={{
-              background: typeColors[pokemon.types[0]], // Gradient dla 2 typów, stały kolor dla 1
-            }}
+          <div
+            key={pokemon.id}
+            className="pokemon-tile"
+            style={{ backgroundColor: typeColors[pokemon.types[0]?.type?.name] }}
             onClick={() => handlePokemonSelect(pokemon)}
           >
-            {pokemon.name}
-          </li>
+            <p>{pokemon.name}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

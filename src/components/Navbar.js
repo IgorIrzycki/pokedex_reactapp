@@ -5,6 +5,24 @@ import '../styles/Navbar.css';
 const Navbar = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
+  const [isNavbarFixed, setNavbarFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollThreshold = 130; // Odległość, po której navbar staje się fixed
+      if (window.scrollY > scrollThreshold) {
+        setNavbarFixed(true);
+      } else {
+        setNavbarFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const storedData = localStorage.getItem('user');
@@ -20,18 +38,25 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    console.log(localStorage.getItem('user'));
     onLogout();
     navigate('/auth');
   };
 
   return (
-    <nav>
+    <nav
+      style={{
+        position: isNavbarFixed ? 'fixed' : 'relative',
+        top: isNavbarFixed ? 0 : 'auto',
+        width: '100%',
+        zIndex: 10,
+        color: 'white',
+      }}
+    >
       <ul>
         <li>
           <Link to="/home">Home</Link>
         </li>
-        {isLoggedIn ? (
+        {isLoggedIn && (
           <>
             <li>
               <Link to="/pokedex">Pokedex</Link>
@@ -42,18 +67,18 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
             <li>
               <Link to="/myteams">My Teams</Link>
             </li>
-            <li>
-              <span>Hello, {username}!</span>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
           </>
-        ) : (
-          <li>
-            <Link to="/auth">Login</Link>
-          </li>
         )}
+        <li>
+          {isLoggedIn ? (
+            <>
+              <span>Hello, {username}!</span>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+          ) : (
+            <Link to="/auth">Login</Link>
+          )}
+        </li>
       </ul>
     </nav>
   );

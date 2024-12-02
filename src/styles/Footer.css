@@ -8,6 +8,7 @@ footer {
     width: 100%;
     font-size: 14px;
     z-index: 1000;
+    font-family: 'Arial', sans-serif;
   }
   
   footer p {

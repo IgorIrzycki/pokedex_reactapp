@@ -1,16 +1,14 @@
-/* Kontener tworzenia drużyny */
 .create-team-container {
   padding: 20px;
-  max-width: 800px;
   margin: 0 auto;
+  width: 80%; /* Rozciągnięcie na całą szerokość */
+  font-family: 'Arial', sans-serif;
 }
 
-/* Nagłówki */
 h1, h2 {
   text-align: center;
 }
 
-/* Input nazwy drużyny */
 .team-name-input {
   display: block;
   width: 100%;
@@ -21,7 +19,6 @@ h1, h2 {
   border-radius: 4px;
 }
 
-/* Wiadomości o błędach */
 .error-message {
   color: red;
   font-weight: bold;
@@ -29,118 +26,67 @@ h1, h2 {
   margin-bottom: 10px;
 }
 
-/* Lista wybranych Pokémonów */
-.selected-pokemon-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+.selected-pokemon-grid,
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Automatyczne dostosowanie */
+  gap: 16px;
+  margin: 20px 0;
+  width: 100%; /* Rozciągnięcie siatki na całą szerokość */
 }
 
-.selected-pokemon-item {
-  background-color: #f9f9f9;
+.pokemon-tile {
+  text-align: center;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 150px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-tile img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.pokemon-tile:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-tile p {
+  margin-top: 8px;
+  font-weight: bold;
   text-transform: capitalize;
 }
 
-.selected-pokemon-item button {
+.pokemon-tile button {
+  margin-top: 10px;
+  padding: 5px 10px;
   background-color: #ff4d4d;
   color: white;
   border: none;
-  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.selected-pokemon-item button:hover {
+.pokemon-tile button:hover {
   background-color: #cc0000;
 }
 
-/* Przycisk zapisz drużynę */
 .save-button {
   display: block;
+  width: 100%;
+  padding: 10px;
   background-color: #4caf50;
   color: white;
-  padding: 10px 20px;
+  font-size: 16px;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
   cursor: pointer;
-  margin: 0 auto 20px auto;
-  text-align: center;
 }
 
 .save-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-/* Siatka Pokémonów */
-.pokemon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-/* Kafelek Pokémona */
-.pokemon-item {
-  background-color: #f1f1f1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  text-transform: capitalize;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  font-size: 14px;
-  height: 120px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #333;
-}
-
-/* Hover na kafelku */
-.pokemon-item:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.05);
-}
-
-/* Kliknięcie na kafelek */
-.pokemon-item:active {
-  transform: scale(1.02);
-}
-
-/* Nazwa Pokémona na kafelku - biały tekst */
-.pokemon-item span {
-  color: white; /* Ustawienie koloru tekstu na biały */
-  font-weight: bold;
-}
-
-/* Responsywność dla mniejszych ekranów */
-@media (max-width: 768px) {
-  .pokemon-grid {
-    justify-content: flex-start; /* Wyrównanie do lewej */
-  }
-
-  .selected-pokemon-item {
-    width: 120px;
-    height: 110px;
-  }
-
-  .pokemon-item {
-    width: 120px;
-    height: 110px;
-  }
 }
