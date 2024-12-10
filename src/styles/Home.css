@@ -1,30 +1,142 @@
-
 .home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .bold-text {
-    font-weight: bold;
-  }
-  
-  .italic-text {
-    font-style: italic;
-  }
-  
-  .underline-text {
-    text-decoration: underline;
-  }
-  
-  .highlighted-text {
-    background-color: #ffff00;
-    padding: 3px;
-    display: inline; 
-  }
-  
-  .custom-styled-text {
-    font-family: 'Arial', sans-serif;
-    color: #4caf50;
-  }
-  
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #333;
+}
+
+.bold-text {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.italic-text {
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.custom-styled-text {
+  margin: 20px 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.guide-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.type-chart-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.type-buttons {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.type-button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.type-button.normal {
+  background-color: #aaa69d;
+}
+
+.type-button.fire {
+  background-color: #ee8130;
+}
+
+.type-button.water {
+  background-color: #6390f0;
+}
+
+.type-button.electric {
+  background-color: #f7d02c;
+}
+
+.type-button.grass {
+  background-color: #7ac74c;
+}
+
+.type-button.ice {
+  background-color: #96d9d6;
+}
+
+.type-button.fighting {
+  background-color: #c22e28;
+}
+
+.type-button.poison {
+  background-color: #a33ea1;
+}
+
+.type-button.ground {
+  background-color: #e2bf65;
+}
+
+.type-button.flying {
+  background-color: #a98ff3;
+}
+
+.type-button.psychic {
+  background-color: #f95587;
+}
+
+.type-button.bug {
+  background-color: #a6b91a;
+}
+
+.type-button.rock {
+  background-color: #b6a136;
+}
+
+.type-button.ghost {
+  background-color: #735797;
+}
+
+.type-button.dragon {
+  background-color: #6f35fc;
+}
+
+.type-button.dark {
+  background-color: #705746;
+}
+
+.type-button.steel {
+  background-color: #b7b7ce;
+}
+
+.type-button.fairy {
+  background-color: #d685ad;
+}
+
+.type-details {
+  margin-top: 20px;
+}
+
+.type-details h4 {
+  color: #444;
+}

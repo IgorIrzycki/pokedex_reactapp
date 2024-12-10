@@ -100,7 +100,7 @@ const CreateTeam = () => {
       };
 
       await axios.post(
-        'http://localhost:8080/api/v1/teams',
+        'http://localhost:8080/api/v1/teams/createTeam',
         teamData,
         {
           headers: {
