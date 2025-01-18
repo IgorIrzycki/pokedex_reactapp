@@ -133,11 +133,11 @@ To change the backend API URL, update the `baseURL` in the `axios` calls in the 
 ## Screenshots
 
 ### Home Page
-(![image](https://github.com/user-attachments/assets/98bf2bdc-f92f-4463-834b-173fa124252e)
+![image](https://github.com/user-attachments/assets/98bf2bdc-f92f-4463-834b-173fa124252e)
 
 
 ### Pokedex
-(![image](https://github.com/user-attachments/assets/9840ddc9-9b52-4364-9379-d69fa412e7a6)
+![image](https://github.com/user-attachments/assets/9840ddc9-9b52-4364-9379-d69fa412e7a6)
 
 
 ### Create Team
@@ -145,7 +145,7 @@ To change the backend API URL, update the `baseURL` in the `axios` calls in the 
 
 
 ### My Teams
-(![image](https://github.com/user-attachments/assets/cba7dc01-e786-43bc-a941-af7401f7b3a7)
+![image](https://github.com/user-attachments/assets/cba7dc01-e786-43bc-a941-af7401f7b3a7)
 
 
 ---
