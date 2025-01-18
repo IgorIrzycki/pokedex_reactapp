@@ -4,7 +4,6 @@ import Team from '../components/Team';
 import '../styles/MyTeams.css';
 
 const MyTeams = () => {
-  const [user, setUser] = useState(null);
   const [teams, setTeams] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [teamsPerPage] = useState(3);
@@ -29,7 +28,7 @@ const MyTeams = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         });
         console.log(response.data)
-        setUser(response.data);
+        //setUser(response.data);
         setTeams(response.data.teams || []);
       } catch (error) {
         console.error('Error fetching user or teams:', error);
@@ -164,7 +163,7 @@ const MyTeams = () => {
 
   return (
     <div className="my-teams-container">
-      <h1>My Teams</h1>
+      {!editingTeam && <h1>My Teams</h1>}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       {editingTeam ? (

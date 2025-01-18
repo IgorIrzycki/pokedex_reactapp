@@ -1,34 +1,35 @@
-/* Navbar container */
+
 nav {
   background-color: #9a4545;
   width: 100%;
   position: relative;
   z-index: 1000;
   top: 0;
-  padding: 10px 0; /* Odstępy wewnętrzne */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Lekki cień */
+  padding: 10px 0; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
   font-family: 'Arial', sans-serif;
+  min-width: 500px;
 }
 
-/* Lista elementów */
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-around; /* Równomierne rozmieszczenie sekcji */
-  align-items: center; /* Wyśrodkowanie w pionie */
+  justify-content: space-around; 
+  align-items: center; 
 }
 
-/* Pojedyncze elementy listy */
+
 li {
   position: relative;
   margin: 0;
-  display: flex; /* Dodano flex dla wyśrodkowania w pionie */
-  align-items: center; /* Wyśrodkowanie zawartości li w pionie */
+  display: flex; 
+  align-items: center; 
 }
 
-/* Linki w nawigacji */
+
 a {
   text-decoration: none;
   color: white;
@@ -36,15 +37,15 @@ a {
   font-size: 16px;
   font-weight: bold;
   border-radius: 5px;
-  transition: all 0.3s ease; /* Płynny efekt hover */
+  transition: all 0.3s ease; 
 }
 
-/* Hover efekt dla linków */
+
 a:hover {
   color: #333;
 }
 
-/* Submenu */
+
 .submenu {
   display: none;
   position: absolute;
@@ -74,16 +75,16 @@ li:hover .submenu {
   color: #333;
 }
 
-/* Styl dla tekstu powitania */
+
 span {
   color: white;
   font-weight: bold;
   margin-right: 10px;
-  font-size: 16px; /* Dopasowanie do wielkości tekstu w linkach */
+  font-size: 16px; 
 }
 
-/* Styl dla przycisku wylogowania */
-button {
+
+.logout-button {
   background-color: red;
   color: white;
   padding: 5px 10px;
@@ -96,13 +97,13 @@ button {
   margin-bottom: 10px;
 }
 
-button:hover {
+.logout-button:hover {
   color: #333;
 }
 
-/* Dodatkowe wyrównanie sekcji */
+
 li span,
 li button {
   display: flex;
-  align-items: center; /* Dopasowanie do pozycji linków */
+  align-items: center; 
 }

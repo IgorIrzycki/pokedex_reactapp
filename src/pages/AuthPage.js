@@ -20,12 +20,11 @@ const AuthPage = ({ onLogin }) => {
         password: loginData.password,
       });
 
-      localStorage.setItem('user', JSON.stringify(response.data)); // Save token in localStorage
+      localStorage.setItem('user', JSON.stringify(response.data));
       const userData = JSON.parse(localStorage.getItem('user'));
       console.log(userData);
-      onLogin(); // Update authentication state
-      navigate('/home'); // Redirect to the home page
-      alert('You have been successfully logged in!');
+      onLogin();
+      navigate('/home');
     } catch (error) {
       console.error('Login failed:', error.message);
       alert('Invalid login credentials.');
@@ -65,49 +64,59 @@ const AuthPage = ({ onLogin }) => {
 
   return (
     <div className="auth-container">
-      <div className="form-container">
-        <h2>Login</h2>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={loginData.username}
-          onChange={(e) => handleInputChange(e, setLoginData)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={loginData.password}
-          onChange={(e) => handleInputChange(e, setLoginData)}
-        />
-        <button onClick={handleLogin}>Login</button>
-      </div>
+      <div className="form-wrapper">
+        <div className="form-container">
+          <h2>Login</h2>
+          <form>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={loginData.username}
+              onChange={(e) => handleInputChange(e, setLoginData)}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={loginData.password}
+              onChange={(e) => handleInputChange(e, setLoginData)}
+            />
+            <button type="button" className="form-button" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
+        </div>
 
-      <div className="form-container">
-        <h2>Register</h2>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={registerData.username}
-          onChange={(e) => handleInputChange(e, setRegisterData)}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={registerData.password}
-          onChange={(e) => handleInputChange(e, setRegisterData)}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={registerData.email}
-          onChange={(e) => handleInputChange(e, setRegisterData)}
-        />
-        <button onClick={handleRegister}>Register</button>
+        <div className="form-container">
+          <h2>Register</h2>
+          <form>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={registerData.username}
+              onChange={(e) => handleInputChange(e, setRegisterData)}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={registerData.password}
+              onChange={(e) => handleInputChange(e, setRegisterData)}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={registerData.email}
+              onChange={(e) => handleInputChange(e, setRegisterData)}
+            />
+            <button type="button" className="form-button" onClick={handleRegister}>
+              Register
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

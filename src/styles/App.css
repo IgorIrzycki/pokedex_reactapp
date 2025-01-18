@@ -1,23 +1,27 @@
-/* App.css */
+.v-generated-body {
+  min-width: 1000px;
+  overflow: auto;
+}
+
 .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Cały ekran */
+    min-height: 100vh; 
     font-family: 'Arial', sans-serif;
   }
   
   .content-container {
-    flex: 1; /* Główna zawartość wypełnia przestrzeń */
-    padding: 20px; /* Odstępy wokół zawartości */
-    background-color: #f4f4f4; /* Kolor tła dla zawartości */
-    overflow-y: auto; /* Dodanie scrolla, jeśli zawartość wykracza poza ekran */
+    flex: 1; 
+    padding: 20px; 
+    background-color: #f4f4f4; 
+    overflow-y: auto; 
   }
   
   footer {
-    background-color: #9a4545; /* Kolor tła zgodny z navbar */
+    background-color: #9a4545; 
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0x;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -37,7 +41,7 @@
   }
   
   footer a:hover {
-    color: #ffd700; /* Kolor po najechaniu */
+    color: #ffd700; 
   }
   
   nav {
@@ -46,7 +50,7 @@
     position: relative;
     z-index: 1000;
     top: 0;
-    padding: 10px 0; /* Odstępy wewnętrzne dla navbar */
+    padding: 10px 0; 
   }
   
   ul {
@@ -54,7 +58,7 @@
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Wyśrodkowanie listy */
+    justify-content: center; 
   }
   
   li {

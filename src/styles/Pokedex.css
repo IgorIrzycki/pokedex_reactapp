@@ -30,8 +30,8 @@
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
     border-radius: 8px;
-    padding: 20px; /* Adding padding to space out the content */
-    background-color: #fff; /* Default background color */
+    padding: 20px; 
+    background-color: #fff; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   

@@ -73,7 +73,7 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
           {isLoggedIn ? (
             <>
               <span>Hello, {username}!</span>
-              <button onClick={handleLogout}>Logout</button>
+              <button className="logout-button" onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <Link to="/auth">Login</Link>

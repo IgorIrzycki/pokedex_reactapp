@@ -1,7 +1,7 @@
 .create-team-container {
   padding: 20px;
   margin: 0 auto;
-  width: 80%; /* Rozciągnięcie na całą szerokość */
+  width: 80%; 
   font-family: 'Arial', sans-serif;
 }
 
@@ -29,10 +29,10 @@ h1, h2 {
 .selected-pokemon-grid,
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Automatyczne dostosowanie */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
   gap: 16px;
   margin: 20px 0;
-  width: 100%; /* Rozciągnięcie siatki na całą szerokość */
+  width: 100%; 
 }
 
 .pokemon-tile {
