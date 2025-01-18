@@ -170,5 +170,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## Author
 
 **Igor Irzycki**  
-Feel free to contact me at [Your Email] for any questions or collaboration opportunities.
+Feel free to contact me at irzycki.igor@gmail.com for any questions or collaboration opportunities.
 
