@@ -9,7 +9,7 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold = 130; // Odległość, po której navbar staje się fixed
+      const scrollThreshold = 130; 
       if (window.scrollY > scrollThreshold) {
         setNavbarFixed(true);
       } else {

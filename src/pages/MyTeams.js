@@ -28,7 +28,6 @@ const MyTeams = () => {
           headers: { Authorization: `Bearer ${userData.token}` },
         });
         console.log(response.data)
-        //setUser(response.data);
         setTeams(response.data.teams || []);
       } catch (error) {
         console.error('Error fetching user or teams:', error);
@@ -75,7 +74,6 @@ const MyTeams = () => {
 
       const token = userData.token;
 
-      // Pobierz obrazki Pokémonów
       const spritesPromises = editedPokemonNames.map(async (pokemonName) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
         return response.data.sprites.front_default;
@@ -83,14 +81,12 @@ const MyTeams = () => {
 
       const pokemonSprites = await Promise.all(spritesPromises);
 
-      // Zaktualizowane dane drużyny
       const updatedTeam = {
         teamName: editedTeamName,
         pokemonNames: editedPokemonNames,
         pokemonSprites,
       };
 
-      // Wysłanie żądania aktualizacji do API
       await axios.put(
         `http://localhost:8080/api/v1/teams/${editingTeam.id}`,
         updatedTeam,
@@ -101,7 +97,6 @@ const MyTeams = () => {
         }
       );
 
-      // Aktualizacja drużyny w stanie
       setTeams((prevTeams) =>
         prevTeams.map((team) =>
           team.id === editingTeam.id ? { ...team, ...updatedTeam } : team

@@ -98,7 +98,6 @@ const Pokedex = () => {
     setSelectedPokemon(null);
   };
 
-  // Funkcja przypisująca tło w zależności od typu
   const getPokemonBackgroundColor = (types) => {
     const colors = {
       normal: '#A8A878',

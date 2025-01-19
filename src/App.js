@@ -22,7 +22,7 @@ function App() {
 
   const AppContent = () => {
     const location = useLocation();
-    const hideNavbarRoutes = ['/auth']; // Ścieżki, dla których navbar ma być ukryty
+    const hideNavbarRoutes = ['/auth'];
     const shouldHideNavbar = hideNavbarRoutes.includes(location.pathname);
 
     return (
@@ -50,7 +50,6 @@ function App() {
               path="/myteams"
               element={isAuthenticated ? <MyTeams /> : <Navigate to="/auth" replace />}
             />
-            {/* Default Redirect */}
             <Route path="*" element={<Navigate to="/auth" replace />} />
           </Routes>
         </div>
